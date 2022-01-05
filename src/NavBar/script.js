@@ -3,9 +3,13 @@ window.onload = () => {
     navLink = document.querySelectorAll(".nav-link"),
     navLinks = document.querySelector(".nav-links");
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
+  if(hamburger)
+  {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+  }
+  
 
   navLink.forEach((link) =>
     link.addEventListener("click", () => {

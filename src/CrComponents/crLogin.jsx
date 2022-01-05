@@ -1,14 +1,61 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import firebase from "../firebase";
 import M from "materialize-css";
 import ShowPassword from "../ShowPassword";
 
+const db = firebase.firestore();
+
+
 class CrLogin extends Component {
+  isMount = false;
+
   state = {
+    user: null,
+    doc: "",
+    verified: false,
+    loading: true,
     email: "",
     password: "",
+  }
+
+
+  authListener = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        if (user.displayName === "cr") {
+          if (this.isMount) {
+            this.setState({
+              verified: true,
+            });
+          }
+        }
+        const docRef = db.collection("cr").doc(user?.email);
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            if (this.isMount) {
+              this.setState({
+                doc: doc.data().classId,
+              });
+            }
+          }
+        });
+      }
+      if (this.isMount) {
+        this.setState({ user });
+      }
+    });
   };
+
+  componentDidMount() {
+    this.isMount = true;
+    this.authListener();
+  }
+
+  componentWillUnmount() {
+    this.isMount = false;
+  }
 
   handleChange = (e) => {
     const nam = e.target.name,
@@ -46,9 +93,9 @@ class CrLogin extends Component {
       .catch((err) => {
         if (
           err.message ===
-            "The password is invalid or the user does not have a password." ||
+          "The password is invalid or the user does not have a password." ||
           err.message ===
-            "There is no user record corresponding to this identifier. The user may have been deleted."
+          "There is no user record corresponding to this identifier. The user may have been deleted."
         ) {
           classList.remove("loading");
           M.toast({
@@ -58,10 +105,6 @@ class CrLogin extends Component {
         }
       });
   };
-
-  render() {
-    return <div>{this.getForm()}</div>;
-  }
 
   getForm = () => {
     return (
@@ -111,6 +154,18 @@ class CrLogin extends Component {
       </div>
     );
   };
+
+  render() {
+    // let display;
+    if (this.state.user && this.state.verified) {
+      return <Redirect to="/cr" />;
+    }
+    else {
+      return <div>{this.getForm()}</div>;
+    }
+  }
+
+
 }
 
 export default CrLogin;

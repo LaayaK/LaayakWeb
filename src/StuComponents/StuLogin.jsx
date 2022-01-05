@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import firebase from "../firebase";
@@ -10,14 +11,48 @@ class StuLogin extends Component {
   state = {
     email: "",
     password: "",
+    access: false,
+    loading: true
   };
 
   componentDidMount() {
     this.isMount = true;
+    this.checkAuth();
   }
 
   UNSAFE_componentWillMount() {
     this.isMount = false;
+  }
+
+  checkAuth() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        if (this.isMount) {
+          this.setState({ email: user.email })
+        }
+        if (user.displayName === "student") {
+          if (this.isMount) {
+            this.setState({
+              access: true,
+              type: "Student"
+            })
+          }
+        }
+        if (user.displayName === "cr") {
+          if (this.isMount) {
+            this.setState({
+              access: true,
+              type: "CR"
+            })
+          }
+        }
+      }
+    });
+    setTimeout(() => {
+      if (this.isMount) {
+        this.setState({ loading: false })
+      }
+    }, 1000)
   }
 
   handleSubmit = (e) => {
@@ -76,7 +111,15 @@ class StuLogin extends Component {
   };
 
   render() {
+
+    if(this.state.email && this.state.access)
+    {
+      return <Redirect to="/student" />
+    }
+else
+{
     return (
+      <>
       <div className="main-container">
         <div className="container-login mx-auto">
           <div className="con-login">
@@ -120,8 +163,9 @@ class StuLogin extends Component {
             </form>
           </div>
         </div>
-      </div>
+      </div></>
     );
+}
   }
 }
 
