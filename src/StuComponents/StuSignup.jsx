@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import M from "materialize-css";
 import firebase from "../firebase";
 import ShowPassword from "../ShowPassword";
-import { auth } from "firebase";
-
+// import { auth } from "firebase";
+const auth = firebase.auth();
 const db = firebase.firestore();
 
 const StuSignup = () => {

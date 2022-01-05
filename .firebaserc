@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "laayak-web-app"
+    "default": "laayak-80ddb"
   },
   "targets": {
     "laayak-web-app": {
@@ -10,6 +10,13 @@
         ],
         "laayak2": [
           "laayak-web-app"
+        ]
+      }
+    },
+    "laayak-80ddb": {
+      "hosting": {
+        "laayak2": [
+          "laayak-80ddb"
         ]
       }
     }
