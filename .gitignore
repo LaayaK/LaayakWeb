@@ -53,6 +53,13 @@ typings/
 # firebase
 /src/firebase.jsx
 .firebase
+.database.rules.json
+.firestore.indexes.json
+.firestore.rules
+.storage.rules
 
 # Local Netlify folder
 .netlify
+
+# Local build folder
+.build

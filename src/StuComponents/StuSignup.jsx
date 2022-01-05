@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
-import firebase from "../firebase";
+import firebase from "firebase/app"
 import ShowPassword from "../ShowPassword";
-import { auth } from "firebase";
+import "firebase/auth";
 
 const db = firebase.firestore();
+const auth = firebase.auth();
 
 const StuSignup = () => {
   const [code, setCode] = useState(""),
