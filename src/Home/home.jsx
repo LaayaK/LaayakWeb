@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import Contact from "./Contact/Contact";
-
+import "./type";
 
 class Home extends Component {
 
   getHeader = () => {
     return (
       <header className="titleheader">
-        <h1 className="title">Link Aaya Kya?</h1>
-        <div className="image mx-auto">
-          <div className="container-fluid">
-            <img
-              className="img-fluid"
-              src={require("../assets/image/title.png")}
-              alt="this is img"
-            />
+          <div className="content">
+            <div>
+                <h1>Link Aaya Kya ?</h1>
+            </div>
+            <h2><span class="pre">You can</span> <span class="role" data-wait='3000'
+                    data-words='["Manage links","Manage Assignments","Manage your Timetable"]'
+                    ></span></h2>
           </div>
-        </div>
       </header>
     );
   };

@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 body {
-  background: rgba(119,161,211,1);
   /*fallback for old browsers*/
-  background: -webkit-linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
+  background: #c7e6ec;
   /* Chrome 10-25, Safari 5.1-6*/
-  background: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
   /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   text-align: center;
@@ -14,16 +12,15 @@ body {
   margin-top: 10vh;
   margin-bottom: 10vh;
   height: 100%;
-  background-attachment: fixed;
+  background-attachment: fixed; 
   overflow-x: hidden;
 }
 
 .dark {
   /* background: #5b6467; */
   /*fallback for old browsers*/
-  background-image: -webkit-linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
   /* Chrome 10-25, Safari 5.1-6*/
-  background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+  background: #01021d
   /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
@@ -42,9 +39,8 @@ body {
 .titleheader {
   margin-top: -10vh;
   padding-top: 12vh;
-  background: url("https://usersthink.com/img/99-free-images-small/02-usersthink-stock-image-small.jpg");
+  /* background: url("https://usersthink.com/img/99-free-images-small/02-usersthink-stock-image-small.jpg"); */
   background-attachment: fixed;
-  background-color: #5f9ea0;
   background-blend-mode: lighten;
   background-size: cover;
   background-position: center;
@@ -53,20 +49,52 @@ body {
   overflow: hidden;
 }
 
-.titleheader .image {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 35vw;
-  min-width: 400px;
-}
-
 .get-started {
   margin-top: 20px;  
 }
 
 .get-started h1{
   text-align: left;
-  margin-left: 10px;
+  margin-left: 5vw;
+  color: #061320;
+}
+.dark .get-started h1{
+  color: aliceblue;
+}
+
+
+.content{
+  margin-top: 20vh;
+}
+.content h1{
+  font-family: "Lobster", cursive;
+  font-size: 7vw;
+  text-align: center;
+  color: #061320;
+  visibility: hidden;
+  animation: removeHide 0s ease-out 0.8s 1 forwards;
+}
+.pre{
+  color:#061320;
+}
+.dark .pre{
+  color: aliceblue;
+}
+.dark .content h1{
+  color:aliceblue;
+}
+@keyframes removeHide{
+  100%{
+      visibility: visible;
+  }
+}
+.content h2{
+  margin-top: 10vh;
+  color: #BAC3CF;
+  font-size: 2rem;
+}
+.role{
+  font-family: "Lobster", cursive;
+  color: #F14B4B;
+  border-right: 3px solid #F14B4B;
 }
