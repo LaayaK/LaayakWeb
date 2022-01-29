@@ -12,15 +12,10 @@ class Home extends Component {
             <div>
                 <h1>Link Aaya Kya ?</h1>
             </div>
-            <h2>You can <span class="role" data-wait='3000'
+            <h2><span class="pre">You can</span> <span class="role" data-wait='3000'
                     data-words='["Manage links","Manage Assignments","Manage your Timetable"]'
                     ></span></h2>
           </div>
-        <div className="box1 box"></div>
-        <div className="box2 box"></div>
-        <div className="box3 box"></div>
-        <div className="box4 box"></div>
-        <div className="box5 box"></div>
       </header>
     );
   };

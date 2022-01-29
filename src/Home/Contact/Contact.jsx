@@ -36,7 +36,7 @@ const Contact = () => {
         <div>
             <h1 className="mt-5">Contact Us: </h1>
             {dev.map((item) => (
-                <div className="dev-container mx-3 my-4" key={item.name}>
+                <div className="dev-container" key={item.name}>
                     <div className="social">
                         <a href={item.github} target="_blank" rel="noopener noreferrer"><i className="fa fa-github" aria-hidden="true"></i> </a>
                     </div>
